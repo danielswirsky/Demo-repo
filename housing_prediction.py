@@ -41,4 +41,8 @@ df.prefarea.replace(
 
 df = pd.get_dummies(df, drop_first=True)
 print(df.dtypes)
+<<<<<<< HEAD
 print(df.shape)
+=======
+print(df.shape)
+>>>>>>> c85fe8f8d0b9fe44a5b44f8f80a0a8229615c93f
