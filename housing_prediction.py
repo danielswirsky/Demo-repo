@@ -16,7 +16,7 @@ df = df[df.area < (df.area.mean() + (3*df.area.std()))]
 #print(df.shape)
 
 #print(df.dtypes)
-print(df.furnishingstatus.unique())
+#print(df.furnishingstatus.unique())
 
 #Can manually replace object colums
 #or use pandas get_dummies for OHE
@@ -40,5 +40,21 @@ df.prefarea.replace(
 )
 
 df = pd.get_dummies(df, drop_first=True)
-print(df.dtypes)
-print(df.shape)
+#print(df.dtypes)
+#print(df.shape)
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+X = df.drop('price', axis='columns')
+y = df.price
+
+X_scaled = scaler.fit_transform(X)
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.25, random_state=10)
+
+print(len(X_train))
+print(len(X_test))
