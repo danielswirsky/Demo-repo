@@ -43,8 +43,11 @@ df = pd.get_dummies(df, drop_first=True)
 #print(df.dtypes)
 #print(df.shape)
 
+#Feature Engineering
+
 from sklearn.preprocessing import StandardScaler
 
+#scale the data 
 scaler = StandardScaler()
 
 X = df.drop('price', axis='columns')
@@ -52,9 +55,9 @@ y = df.price
 
 X_scaled = scaler.fit_transform(X)
 
+#split data in a train/test split
 from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.25, random_state=10)
 
-print(len(X_train))
-print(len(X_test))
+
